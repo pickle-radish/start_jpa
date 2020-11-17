@@ -6,6 +6,8 @@ import com.example.jpa.start.jpa.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/jpa/api/v2")
@@ -29,4 +31,22 @@ public class UserController {
         return "deleted complete";
     }
 
+
+    @GetMapping("/user/{userId}")
+    public UserResponseDTO select(@PathVariable Integer userId) {
+        return service.select(userId);
+    }
+
+
+    @GetMapping("/user")
+    public List<UserResponseDTO> selectAll() {
+        return service.selectAll();
+    }
+
+
+
+    @GetMapping("/user/class/{classNum}")
+    public List<UserResponseDTO> selectClassNum(@PathVariable String classNum) {
+        return service.selectClassNum(classNum);
+    }
 }
