@@ -4,6 +4,10 @@ import com.example.jpa.start.jpa.dto.UserRequestDTO;
 import com.example.jpa.start.jpa.dto.UserResponseDTO;
 import com.example.jpa.start.jpa.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -39,8 +43,8 @@ public class UserController {
 
 
     @GetMapping("/user")
-    public List<UserResponseDTO> selectAll() {
-        return service.selectAll();
+    public Page<UserResponseDTO> selectAll(@PageableDefault(sort = "userId", direction = Sort.Direction.DESC) Pageable pageable) {
+        return service.selectAll(pageable);
     }
 
 

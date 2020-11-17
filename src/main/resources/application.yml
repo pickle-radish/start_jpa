@@ -15,3 +15,8 @@ spring:
     properties:
       hibernate:
         format_sql: true
+
+  data:
+    web:
+      pageable:
+        default-page-size: 10
