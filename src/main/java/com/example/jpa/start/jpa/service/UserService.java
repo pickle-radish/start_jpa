@@ -20,4 +20,17 @@ public class UserService {
     }
 
 
+    @Transactional
+    public UserResponseDTO update(Integer userId, UserRequestDTO requestDto) {
+        User user = repository.findById(userId).orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id=" + userId));
+        user.setUserName(requestDto.getUserName());
+        user.setClassNum(requestDto.getClassNum());
+
+        return new UserResponseDTO(user);
+    }
+
+    @Transactional
+    public void delete(Integer userId) {
+        repository.deleteById(userId);
+    }
 }

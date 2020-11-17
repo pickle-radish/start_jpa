@@ -4,9 +4,7 @@ import com.example.jpa.start.jpa.dto.UserRequestDTO;
 import com.example.jpa.start.jpa.dto.UserResponseDTO;
 import com.example.jpa.start.jpa.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RequiredArgsConstructor
 @RestController
@@ -19,4 +17,16 @@ public class UserController {
     public UserResponseDTO save(UserRequestDTO requestDto) {
         return service.save(requestDto);
     }
+
+    @PutMapping("/user/{userId}")
+    public UserResponseDTO update(@PathVariable Integer userId, UserRequestDTO requestDto) {
+        return service.update(userId, requestDto);
+    }
+
+    @DeleteMapping("/user/{userId}")
+    public String delete(@PathVariable Integer userId) {
+        service.delete(userId);
+        return "deleted complete";
+    }
+
 }
