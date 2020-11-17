@@ -5,6 +5,9 @@ import com.example.jpa.start.jpa.dto.UserResponseDTO;
 import com.example.jpa.start.jpa.entity.User;
 import com.example.jpa.start.jpa.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -48,10 +51,10 @@ public class UserService {
         return list.stream().map(o -> new UserResponseDTO(o)).collect(Collectors.toList());
     }
 
+    public Page<UserResponseDTO> selectAll(Pageable pageable) {
+        Page<User> list = repository.findAll(pageable);
+        List<UserResponseDTO> responseDtoList = list.stream().map(o -> new UserResponseDTO(o)).collect(Collectors.toList());
 
-    public List<UserResponseDTO> selectAll() {
-        List<User> list = repository.findAll();
-        return list.stream().map(o -> new UserResponseDTO(o)).collect(Collectors.toList());
-
+        return new PageImpl<>(responseDtoList, pageable, list.getTotalElements());
     }
 }
