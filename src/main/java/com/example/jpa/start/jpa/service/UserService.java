@@ -8,6 +8,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @RequiredArgsConstructor
 public class UserService {
@@ -32,5 +35,23 @@ public class UserService {
     @Transactional
     public void delete(Integer userId) {
         repository.deleteById(userId);
+    }
+
+    public UserResponseDTO select(Integer userId) {
+//        User user = repository.findById(userId).orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id=" + userId));
+        User user = repository.findByUserId(userId).orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id=" + userId));
+        return new UserResponseDTO(user);
+    }
+
+    public List<UserResponseDTO> selectClassNum(String classNum) {
+        List<User> list = repository.findAllByClassNum(classNum);
+        return list.stream().map(o -> new UserResponseDTO(o)).collect(Collectors.toList());
+    }
+
+
+    public List<UserResponseDTO> selectAll() {
+        List<User> list = repository.findAll();
+        return list.stream().map(o -> new UserResponseDTO(o)).collect(Collectors.toList());
+
     }
 }
