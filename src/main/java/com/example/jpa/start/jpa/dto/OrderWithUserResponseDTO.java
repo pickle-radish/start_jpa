@@ -7,19 +7,17 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public class OrderResponseDTO {
+public class OrderWithUserResponseDTO {
 
     private Integer orderId;
 
     private String orderName;
 
-//    private UserResponseDTO user;
-    private Integer userId;
+    private UserResponseDTO user;
 
-    public OrderResponseDTO(Order order) {
+    public OrderWithUserResponseDTO(Order order) {
         this.orderId = order.getOrderId();
         this.orderName = order.getOrderName();
-//        this.user = new UserResponseDTO(order.getUser());
-        this.userId = order.getUserId();
+        this.user = new UserResponseDTO(order.getUser());
     }
 }

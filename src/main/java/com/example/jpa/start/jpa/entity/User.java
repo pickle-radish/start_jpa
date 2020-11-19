@@ -1,7 +1,6 @@
 package com.example.jpa.start.jpa.entity;
 
 import lombok.*;
-import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 
@@ -16,9 +15,9 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
     private Integer userId;
 
-    @Column()
     private String classNum;
     private String userName;
 

@@ -16,14 +16,15 @@ import javax.persistence.*;
 @Table(name = "order_table")
 public class Order {
 
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private Integer orderId;
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer orderId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", insertable = false, updatable = false)
+    private User user;
 
     private String orderName;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
 
 }

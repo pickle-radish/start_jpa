@@ -1,13 +1,10 @@
 package com.example.jpa.start.jpa.dto;
 
 import com.example.jpa.start.jpa.entity.Order;
-import com.example.jpa.start.jpa.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import javax.persistence.*;
 
 @Getter
 @Setter
@@ -21,11 +18,12 @@ public class OrderRequestDTO {
 
     private Integer userId;
 
-    public Order toEntity(User user) {
+    public Order toEntity() {
         return Order.builder()
                 .orderId(orderId)
                 .orderName(orderName)
-                .user(user)
+//                .user(user)
+                .userId(userId)
                 .build();
     }
 }
