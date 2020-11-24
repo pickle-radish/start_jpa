@@ -28,7 +28,7 @@ public class UserService {
 
     @Transactional
     public UserResponseDTO update(Integer userId, UserRequestDTO requestDto) {
-        User user = repository.findById(userId).orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id=" + userId));
+        User user = repository.findById(userId).orElseThrow(() -> new IllegalArgumentException("해당 아이디가 없습니다 id=" + userId));
         user.setUserName(requestDto.getUserName());
         user.setClassNum(requestDto.getClassNum());
 
@@ -41,8 +41,8 @@ public class UserService {
     }
 
     public UserResponseDTO select(Integer userId) {
-//        User user = repository.findById(userId).orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id=" + userId));
-        User user = repository.findByUserId(userId).orElseThrow(() -> new IllegalArgumentException("해당 게시글이 없습니다. id=" + userId));
+//        User user = repository.findById(userId).orElseThrow(() -> new IllegalArgumentException("해당 아이디가 없습니다 id=" + userId));
+        User user = repository.findByUserId(userId).orElseThrow(() -> new IllegalArgumentException("해당 아이디가 없습니다 id=" + userId));
         return new UserResponseDTO(user);
     }
 
@@ -55,6 +55,6 @@ public class UserService {
         Page<User> list = repository.findAll(pageable);
         List<UserResponseDTO> responseDtoList = list.stream().map(o -> new UserResponseDTO(o)).collect(Collectors.toList());
 
-        return new PageImpl<>(responseDtoList, pageable, list.getTotalElements());
+        return new PageImpl<>(null, pageable, list.getTotalElements());
     }
 }
