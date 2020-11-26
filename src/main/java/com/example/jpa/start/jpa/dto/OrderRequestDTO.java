@@ -12,7 +12,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class OrderRequestDTO {
 
-    private Integer orderId;
+//    private Integer orderId;
 
     private String orderName;
 
@@ -20,10 +20,10 @@ public class OrderRequestDTO {
 
     public Order toEntity() {
         return Order.builder()
-                .orderId(orderId)
+//                .orderId(orderId)
+                .userId(userId)
                 .orderName(orderName)
 //                .user(user)
-                .userId(userId)
                 .build();
     }
 }

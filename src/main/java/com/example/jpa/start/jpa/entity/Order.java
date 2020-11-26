@@ -21,6 +21,9 @@ public class Order {
 //    private Integer orderId;
 
     @Id
+    @Column(name = "user_id")
+    private Integer userId;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", insertable = false, updatable = false)
     private User user;

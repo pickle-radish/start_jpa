@@ -26,8 +26,8 @@ public class OrderService {
         return new OrderResponseDTO(repository.save(requestDto.toEntity()));
     }
 
-    public OrderResponseDTO select(Integer orderId) {
-        Order order = repository.findById(orderId).orElseThrow(() -> new IllegalArgumentException("해당 아이디가 없습니다"));
+    public OrderResponseDTO select(Integer userId) {
+        Order order = repository.findById(userId).orElseThrow(() -> new IllegalArgumentException("해당 아이디가 없습니다"));
         return new OrderResponseDTO(order);
     }
 

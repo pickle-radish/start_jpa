@@ -25,9 +25,9 @@ public class OrderController {
         return service.save(requestDto);
     }
 
-    @GetMapping("/order/{orderId}")
-    public OrderResponseDTO select(@PathVariable Integer orderId) {
-        return service.select(orderId);
+    @GetMapping("/order/{userId}")
+    public OrderResponseDTO select(@PathVariable Integer userId) {
+        return service.select(userId);
     }
 
     @GetMapping("/order/user/{userId}")
@@ -35,5 +35,5 @@ public class OrderController {
         return service.selectByUserId(userId);
     }
 
-
 }
+
