@@ -7,7 +7,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: none
       naming:
         physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
     show-sql: true
@@ -21,6 +21,17 @@ spring:
       pageable:
         default-page-size: 10
 
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: pickleradish0222@gmail.com
+    password: pickletest
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
 
 logging:
   level:

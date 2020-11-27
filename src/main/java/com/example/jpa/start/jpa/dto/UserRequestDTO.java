@@ -14,11 +14,12 @@ public class UserRequestDTO {
 
     private String classNum;
     private String userName;
-
+    private String phone;
     public User toEntity() {
         return User.builder()
                 .classNum(classNum)
                 .userName(userName)
+                .phone(phone)
                 .build();
     }
 }
