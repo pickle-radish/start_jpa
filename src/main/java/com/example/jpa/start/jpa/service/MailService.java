@@ -15,12 +15,12 @@ public class MailService {
 
     @Autowired
     private JavaMailSender mailSender;
-    private static final String FROM_ADDRESS = "pickleradish0222@gmail.com";
+    private static final String FROM_ADDRESS = "From address";
 
     public void login(String randomNum) {
 
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setTo("tkdansg0222@gmail.com");
+        message.setTo("to address");
         message.setFrom(MailService.FROM_ADDRESS);
         message.setSubject("login test");
         message.setText("test for send mail \n your auth number is " + randomNum);

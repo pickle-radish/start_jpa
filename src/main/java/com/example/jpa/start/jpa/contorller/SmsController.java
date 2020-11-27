@@ -57,7 +57,9 @@ public class SmsController {
         User user = service.login(name);
 
         req.getSession().setAttribute("name", user.getUserName());
-        String cellular = user.getPhone().replaceAll("-", "");	//휴대폰 번호
+//        String cellular = user.getPhone().replaceAll("-", "");	//휴대폰 번호
+
+        String cellular = "010-0000-0000"
 
         String randomNum = generateRandomNumber();
         StringBuilder strBuilder = new StringBuilder(SMS_MESSAGE_PREFIX).append(randomNum).append(SMS_MESSAGE_SUFFIX);
