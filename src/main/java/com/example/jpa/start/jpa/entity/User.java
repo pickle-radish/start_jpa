@@ -19,6 +19,9 @@ public class User {
     private Integer userId;
 
     private String classNum;
+
+    @Column(name = "user_name", unique = true)
     private String userName;
+    private String phone;
 
 }
