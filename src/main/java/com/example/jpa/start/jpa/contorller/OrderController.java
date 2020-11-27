@@ -1,6 +1,7 @@
 package com.example.jpa.start.jpa.contorller;
 
 
+import com.example.jpa.start.jpa.dto.OrderByUserResponseDTO;
 import com.example.jpa.start.jpa.dto.OrderRequestDTO;
 import com.example.jpa.start.jpa.dto.OrderResponseDTO;
 import com.example.jpa.start.jpa.dto.OrderWithUserResponseDTO;
@@ -25,14 +26,19 @@ public class OrderController {
         return service.save(requestDto);
     }
 
-    @GetMapping("/order/{userId}")
-    public OrderResponseDTO select(@PathVariable Integer userId) {
-        return service.select(userId);
+    @GetMapping("/order/{userId}/{itemId}")
+    public OrderResponseDTO select(@PathVariable Integer userId, @PathVariable Integer itemId) {
+        return service.select(userId, itemId);
     }
 
-    @GetMapping("/order/user/{userId}")
-    public List<OrderWithUserResponseDTO> selectByUserId(@PathVariable Integer userId) {
-        return service.selectByUserId(userId);
+    @GetMapping("/order/user/with/{userId}")
+    public List<OrderWithUserResponseDTO> selectWithUser(@PathVariable Integer userId) {
+        return service.selectWithUser(userId);
+    }
+
+    @GetMapping("/order/user/by/{userId}")
+    public List<OrderByUserResponseDTO> selectByUser(@PathVariable Integer userId) {
+        return service.selectByUser(userId);
     }
 
 }

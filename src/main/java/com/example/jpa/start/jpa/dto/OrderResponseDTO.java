@@ -13,14 +13,17 @@ public class OrderResponseDTO {
 
     private Integer userId;
 
+    private Integer itemId;
+
     private String orderName;
 
 //    private UserResponseDTO user;
 
     public OrderResponseDTO(Order order) {
 //        this.orderId = order.getOrderId();
-        this.orderName = order.getOrderName();
 //        this.user = new UserResponseDTO(order.getUser());
         this.userId = order.getUserId();
+        this.itemId = order.getItemId();
+        this.orderName = order.getOrderName();
     }
 }

@@ -17,11 +17,13 @@ public class OrderRequestDTO {
     private String orderName;
 
     private Integer userId;
+    private Integer itemId;
 
     public Order toEntity() {
         return Order.builder()
 //                .orderId(orderId)
                 .userId(userId)
+                .itemId(itemId)
                 .orderName(orderName)
 //                .user(user)
                 .build();

@@ -1,5 +1,6 @@
 package com.example.jpa.start.jpa.entity;
 
+
 import lombok.*;
 import org.hibernate.annotations.DynamicUpdate;
 
@@ -12,19 +13,15 @@ import javax.persistence.*;
 @DynamicUpdate
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+@Table(name = "item")
+public class ItemList {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id")
-    private Integer userId;
+    @Column(name = "item_id")
+    private Integer itemId;
 
-    private String classNum;
-
-    @Column(name = "user_name", unique = true)
-    private String userName;
-
-//    private String phone;
-
+    private String itemCategory;
+    private String itemName;
 
 }

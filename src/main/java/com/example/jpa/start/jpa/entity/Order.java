@@ -13,20 +13,25 @@ import javax.persistence.*;
 @DynamicUpdate
 @NoArgsConstructor
 @AllArgsConstructor
+@IdClass(OrderId.class)
 @Table(name = "order_table")
 public class Order {
-
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private Integer orderId;
 
     @Id
     @Column(name = "user_id")
     private Integer userId;
 
+    @Id
+    @Column(name = "item_id")
+    private Integer itemId;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", insertable = false, updatable = false)
     private User user;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "item_id", insertable = false, updatable = false)
+    private ItemList item;
 
     private String orderName;
 
